@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Life - Fitness Asistanı | Antrenman</title>
+    <meta name="description" content="Get Life ile etkili ev ve spor salonu egzersizleri. Kişisel fitness hedeflerinize ulaşmak için profesyonel antrenman programları.">
+    <link rel="canonical" href="https://www.getlife.com/antrenman.html">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .workout-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 2rem;
+            padding: 2rem;
+        }
+        .category {
+            background-color: var(--feature-bg-color);
+            border-radius: 10px;
+            padding: 2rem;
+            width: calc(50% - 1rem);
+            box-shadow: 0 4px 6px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px var(--shadow-color);
+        }
+        .exercise {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+        .exercise-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        .exercise-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .exercise-content {
+            flex: 1;
+        }
+        .watch-video {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .watch-video:hover {
+            background-color: var(--secondary-color);
+        }
+        .video-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+        }
+        .video-content {
+            position: relative;
+            margin: 10% auto;
+            width: 80%;
+            max-width: 800px;
+        }
+        .close-video {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .category {
+                width: 100%;
+            }
+            .exercise {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .exercise-image {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/index.html" class="logo">
+                <img src="/images/logo_transparent.png" alt="Get Life Logo">
+            </a>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li class="active"><a href="/antrenman.html">Antrenman</a></li>
+                    <li><a href="/beslenme.html">Beslenme</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li><a href="/hesaplamalar.html">Hesaplamalar</a></li>
+                    <li><a href="/iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="nav-icons">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Ara...">
+                </div>
+                <div class="mode-toggle" title="Tema Değiştir">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <a href="#" title="Giriş Yap"><i class="fas fa-user"></i></a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="workout-categories">
+            <div class="category">
+                <h2><i class="fas fa-home"></i> Ev Egzersizleri</h2>
+                <div class="exercise">
+                    <div class="exercise-image">
+                        <img src="images/squat.png" alt="Vücut Ağırlığı Squat" loading="lazy">
+                    </div>
+                    <div class="exercise-content">
+                        <h3>Vücut Ağırlığı Squat</h3>
+                        <p>Bacak ve kalça kaslarını güçlendiren temel bir hareket.</p>
+                        <div class="exercise-details">
+                            <span>Set: 3</span>
+                            <span>Tekrar: 15</span>
+                            <span>Seviye: Başlangıç</span>
+                        </div><br>
+                        <button class="watch-video" onclick="openVideo('squat-video')" aria-label="Squat egzersiz videosunu izle">Videoyu İzle</button>
+                    </div>
+                </div>
+                <div class="exercise">
+                    <div class="exercise-image">
+                        <img src="images/plank.png" alt="Plank" loading="lazy">
+                    </div>
+                    <div class="exercise-content">
+                        <h3>Plank</h3>
+                        <p>Karın ve sırt kaslarını çalıştıran statik bir egzersiz.</p>
+                        <div class="exercise-details">
+                            <span>Süre: 30 saniye</span>
+                            <span>Set: 3</span>
+                            <span>Seviye: Orta</span>
+                        </div><br>
+                        <button class="watch-video" onclick="openVideo('plank-video')" aria-label="Plank egzersiz videosunu izle">Videoyu İzle</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category">
+                <h2><i class="fas fa-dumbbell"></i> Spor Salonu Egzersizleri</h2>
+                <div class="exercise">
+                    <div class="exercise-image">
+                        <img src="images/bench.png" alt="Bench Press" loading="lazy">
+                    </div>
+                    <div class="exercise-content">
+                        <h3>Dumbell Bench Press</h3>
+                        <p>Göğüs kaslarını geliştiren temel bir kuvvet egzersizi.</p>
+                        <div class="exercise-details">
+                            <span>Set: 4</span>
+                            <span>Tekrar: 8-10</span>
+                            <span>Seviye: Orta</span>
+                        </div><br>
+                        <button class="watch-video" onclick="openVideo('bench-press-video')" aria-label="Bench Press egzersiz videosunu izle">Videoyu İzle</button>
+                    </div>
+                </div>
+                <div class="exercise">
+                    <div class="exercise-image">
+                        <img src="images/lat.png" alt="Lat Pulldown" loading="lazy">
+                    </div>
+                    <div class="exercise-content">
+                        <h3>Lateral Raise</h3>
+                        <p>Sırt kaslarını hedefleyen etkili bir makine egzersizi.</p>
+                        <div class="exercise-details">
+                            <span>Set: 3</span>
+                            <span>Tekrar: 12</span>
+                            <span>Seviye: Başlangıç</span>
+                        </div><br>
+                        <button class="watch-video" onclick="openVideo('lat-pulldown-video')" aria-label="Lat Pulldown egzersiz videosunu izle">Videoyu İzle</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="videoModal" class="video-modal">
+        <div class="video-content">
+            <span class="close-video" onclick="closeVideo()">&times;</span>
+            <div class="video-wrapper">
+                <iframe id="exerciseVideo" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>GetLife Nedir? </h3>
+                <p>Sağlıklı yaşam ve fitness yolculuğunuzda yanınızdayız. Profesyonel rehberlik ve kişiselleştirilmiş programlarla hedeflerinize ulaşmanıza yardımcı oluyoruz.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Hızlı Bağlantılar</h3>
+                <ul>
+                    <li><a href="/index.html">Ana Sayfa</a></li>
+                    <li><a href="/antrenman.html">Antrenman</a></li>
+                    <li><a href="/beslenme.html">Beslenme</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li><a href="/iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>İletişim</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Şahinbey, Gaziantep</p>
+                <p><i class="fas fa-phone"></i> Telefon: (0537) 780 36 12</p>
+                <p><i class="fas fa-envelope"></i> keremerkengel@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Bizi Takip Edin</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 GetLife. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+    <script>
+        const videoIds = {
+            'squat-video': '42bFodPahBU',
+            'plank-video': 'Fcbw82ykBvY',
+            'bench-press-video': 'GrmETJwvBgY',
+            'lat-pulldown-video': '6L19uhg2otQ'
+        };
+
+        function openVideo(videoKey) {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('exerciseVideo');
+            const videoId = videoIds[videoKey];
+            if (videoId) {
+                iframe.src = `https://www.youtube.com/embed/${videoId}?si=taBFBMC-IZGUq7FR`;
+                modal.style.display = 'block';
+            } else {
+                console.error('Video ID bulunamadı:', videoKey);
+            }
+        }
+
+        function closeVideo() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('exerciseVideo');
+            modal.style.display = 'none';
+            iframe.src = '';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target == modal) {
+                closeVideo();
+            }
+        }
+    </script>
+</body>
+</html>

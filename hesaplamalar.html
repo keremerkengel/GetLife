@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Life - Fitness Hesaplamaları</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        
+        .calculator-container {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .tab-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+        .tab.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        .calc-form {
+            display: none;
+        }
+        .calc-form.active {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--input-bg);
+            color: var(--text-color);
+        }
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--result-bg);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/index.html" class="logo">
+                <img src="/images/logo_transparent.png" alt="Get Life Logo">
+            </a>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="/antrenman.html">Antrenman</a></li>
+                    <li><a href="/beslenme.html">Beslenme</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li class="active"><a href="/hesaplamalar.html">Hesaplamalar</a></li>
+                    <li><a href="/iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="nav-icons">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Ara...">
+                </div>
+                <div class="mode-toggle" title="Tema Değiştir">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <a href="#" title="Giriş Yap"><i class="fas fa-user"></i></a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Fitness Hesaplamaları</h1>
+        <p>Fitness hedeflerinize ulaşmanıza yardımcı olacak hesaplama araçlarımızı kullanın.</p>
+
+        <div class="calculator-container">
+            <div class="tab-container">
+                <div class="tab active" data-tab="bmi">VKİ</div>
+                <div class="tab" data-tab="bmr">BMH</div>
+                <div class="tab" data-tab="calorie">Kalori İhtiyacı</div>
+                <div class="tab" data-tab="bodyfat">Vücut Yağ Oranı</div>
+                <div class="tab" data-tab="idealweight">İdeal Kilo</div>
+            </div>
+
+            <div id="bmi-calc" class="calc-form active">
+                <h2>Vücut Kitle İndeksi (VKİ) Hesaplama</h2>
+                <div class="form-group">
+                    <label for="bmi-height">Boy (cm):</label>
+                    <input type="number" id="bmi-height" required>
+                </div>
+                <div class="form-group">
+                    <label for="bmi-weight">Kilo (kg):</label>
+                    <input type="number" id="bmi-weight" required>
+                </div>
+                <button onclick="calculateBMI()">Hesapla</button>
+            </div>
+
+            <div id="bmr-calc" class="calc-form">
+                <h2>Bazal Metabolizma Hızı (BMH) Hesaplama</h2>
+                <div class="form-group">
+                    <label for="bmr-gender">Cinsiyet:</label>
+                    <select id="bmr-gender">
+                        <option value="male">Erkek</option>
+                        <option value="female">Kadın</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bmr-age">Yaş:</label>
+                    <input type="number" id="bmr-age" required>
+                </div>
+                <div class="form-group">
+                    <label for="bmr-height">Boy (cm):</label>
+                    <input type="number" id="bmr-height" required>
+                </div>
+                <div class="form-group">
+                    <label for="bmr-weight">Kilo (kg):</label>
+                    <input type="number" id="bmr-weight" required>
+                </div>
+                <button onclick="calculateBMR()">Hesapla</button>
+            </div>
+
+            <div id="calorie-calc" class="calc-form">
+                <h2>Günlük Kalori İhtiyacı Hesaplama</h2>
+                <div class="form-group">
+                    <label for="calorie-bmr">BMH:</label>
+                    <input type="number" id="calorie-bmr" required>
+                </div>
+                <div class="form-group">
+                    <label for="calorie-activity">Aktivite Seviyesi:</label>
+                    <select id="calorie-activity">
+                        <option value="1.2">Hareketsiz</option>
+                        <option value="1.375">Hafif Aktif</option>
+                        <option value="1.55">Orta Aktif</option>
+                        <option value="1.725">Çok Aktif</option>
+                        <option value="1.9">Ekstra Aktif</option>
+                    </select>
+                </div>
+                <button onclick="calculateCalorie()">Hesapla</button>
+            </div>
+
+            <div id="bodyfat-calc" class="calc-form">
+                <h2>Vücut Yağ Oranı Hesaplama</h2>
+                <div class="form-group">
+                    <label for="bf-gender">Cinsiyet:</label>
+                    <select id="bf-gender">
+                        <option value="male">Erkek</option>
+                        <option value="female">Kadın</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bf-height">Boy (cm):</label>
+                    <input type="number" id="bf-height" required>
+                </div>
+                <div class="form-group">
+                    <label for="bf-weight">Kilo (kg):</label>
+                    <input type="number" id="bf-weight" required>
+                </div>
+                <div class="form-group">
+                    <label for="bf-waist">Bel Çevresi (cm):</label>
+                    <input type="number" id="bf-waist" required>
+                </div>
+                <div class="form-group" id="bf-neck-group">
+                    <label for="bf-neck">Boyun Çevresi (cm):</label>
+                    <input type="number" id="bf-neck" required>
+                </div>
+                <div class="form-group" id="bf-hip-group" style="display:none;">
+                    <label for="bf-hip">Kalça Çevresi (cm):</label>
+                    <input type="number" id="bf-hip">
+                </div>
+                <button onclick="calculateBodyFat()">Hesapla</button>
+            </div>
+
+            <div id="idealweight-calc" class="calc-form">
+                <h2>İdeal Kilo Hesaplama</h2>
+                <div class="form-group">
+                    <label for="iw-gender"><b>Cinsiyet:</b></label>
+                    <select id="iw-gender">
+                        <option value="choose">Seçiniz..</option>
+                        <option value="male">Erkek</option>
+                        <option value="female">Kadın</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="iw-height">Boy (cm):</label>
+                    <input type="number" id="iw-height" required>
+                </div>
+                <button onclick="calculateIdealWeight()">Hesapla</button>
+            </div>
+
+            <div id="result"></div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>GetLife Nedir? </h3>
+                <p>Sağlıklı yaşam ve fitness yolculuğunuzda yanınızdayız. Profesyonel rehberlik ve kişiselleştirilmiş programlarla hedeflerinize ulaşmanıza yardımcı oluyoruz.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Hızlı Bağlantılar</h3>
+                <ul>
+                    <li><a href="/index.html">Ana Sayfa</a></li>
+                    <li><a href="/antrenman.html">Antrenman</a></li>
+                    <li><a href="/beslenme.html">Beslenme</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li><a href="/iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>İletişim</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Şahinbey, Gaziantep</p>
+                <p><i class="fas fa-phone"></i> Telefon: (0537) 780 36 12</p>
+                <p><i class="fas fa-envelope"></i> keremerkengel@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Bizi Takip Edin</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 GetLife. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+    <script src="/script.js"></script>
+    <script>
+        // Tab değiştirme fonksiyonu
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.calc-form').forEach(form => form.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(`${tab.dataset.tab}-calc`).classList.add('active');
+            });
+        });
+
+        // VKİ hesaplama fonksiyonu
+        function calculateBMI() {
+            const height = document.getElementById('bmi-height').value / 100; // cm'yi m'ye çevir
+            const weight = document.getElementById('bmi-weight').value;
+            const bmi = weight / (height * height);
+            let result = `VKİ: ${bmi.toFixed(2)} - `;
+            if (bmi < 18.5) result += "Zayıf";
+            else if (bmi < 25) result += "Normal";
+            else if (bmi < 30) result += "Fazla Kilolu";
+            else result += "Obez";
+            document.getElementById('result').innerHTML = result;
+        }
+
+        function calculateBMR() {
+            const gender = document.getElementById('bmr-gender').value;
+            const age = parseInt(document.getElementById('bmr-age').value);
+            const height = parseInt(document.getElementById('bmr-height').value);
+            const weight = parseFloat(document.getElementById('bmr-weight').value);
+            
+            let bmr;
+            if (gender === 'male') {
+                bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+            } else {
+                bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+            }
+            
+            document.getElementById('result').innerHTML = `Bazal Metabolizma Hızınız (BMH): ${Math.round(bmr)} kalori/gün`;
+        }
+
+        function calculateCalorie() {
+            const bmr = parseFloat(document.getElementById('calorie-bmr').value);
+            const activityFactor = parseFloat(document.getElementById('calorie-activity').value);
+            
+            const dailyCalorie = bmr * activityFactor;
+            
+            document.getElementById('result').innerHTML = `Günlük Kalori İhtiyacınız: ${Math.round(dailyCalorie)} kalori`;
+        }
+
+        function calculateBodyFat() {
+            const gender = document.getElementById('bf-gender').value;
+            const height = parseInt(document.getElementById('bf-height').value);
+            const weight = parseFloat(document.getElementById('bf-weight').value);
+            const waist = parseFloat(document.getElementById('bf-waist').value);
+            const neck = parseFloat(document.getElementById('bf-neck').value);
+            
+            let bodyFat;
+            if (gender === 'male') {
+                bodyFat = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
+            } else {
+                const hip = parseFloat(document.getElementById('bf-hip').value);
+                bodyFat = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(height)) - 450;
+            }
+            
+            document.getElementById('result').innerHTML = `Tahmini Vücut Yağ Oranınız: ${bodyFat.toFixed(1)}%`;
+        }
+
+        function calculateIdealWeight() {
+            const gender = document.getElementById('iw-gender').value;
+            const height = parseInt(document.getElementById('iw-height').value);
+            
+            let idealWeight;
+            if (gender === 'male') {
+                idealWeight = 50 + 2.3 * ((height - 152.4) / 2.54);
+            } else {
+                idealWeight = 45.5 + 2.3 * ((height - 152.4) / 2.54);
+            }
+            
+            document.getElementById('result').innerHTML = `İdeal Kilonuz: ${idealWeight.toFixed(1)} kg`;
+        }
+
+        // Cinsiyet seçimine göre kalça ölçüsü alanını göster/gizle
+        document.getElementById('bf-gender').addEventListener('change', function() {
+            const hipGroup = document.getElementById('bf-hip-group');
+            hipGroup.style.display = this.value === 'female' ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>

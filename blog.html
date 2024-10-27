@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Life - Fitness Blogu</title>
+    <meta name="description" content="Get Life Fitness Blogu: Sağlıklı yaşam, egzersiz ve beslenme hakkında en güncel bilgiler ve ipuçları.">
+    <link rel="canonical" href="https://www.getlife.com/blog.html">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        :root {
+            --bg-color: #F5F5F5;
+            --primary-color: #48CFCB;
+            --secondary-color: #229799;
+            --text-color: #424242;
+            --card-bg: #ffffff;
+        }
+
+        .dark-mode {
+            --bg-color: #121212;
+            --primary-color: #5FE3E0;
+            --secondary-color: #2FCAC7;
+            --text-color: #E0E0E0;
+            --card-bg: #1E1E1E;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
+            margin-top: 100px;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: var(--secondary-color);
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .blog-item {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .blog-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-content h2 {
+            margin-top: 0;
+            font-size: 1.4em;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .blog-content p {
+            font-size: 1em;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .blog-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px 25px;
+        }
+
+        .read-more {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--card-bg);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .read-more:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .like-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.4em;
+            color: var(--primary-color);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .like-btn:hover, .like-btn.liked {
+            color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .like-count {
+            font-size: 0.9em;
+            margin-left: 5px;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/index.html" class="logo">
+                <img src="/images/logo_transparent.png" alt="Get Life Logo">
+            </a>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="/antrenman.html">Antrenman</a></li>
+                    <li><a href="/beslenme.html">Beslenme</a></li>
+                    <li class="active"><a href="/blog.html">Blog</a></li>
+                    <li><a href="/hesaplamalar.html">Hesaplamalar</a></li>
+                    <li><a href="/iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="nav-icons">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Ara...">
+                </div>
+                <div class="mode-toggle" title="Tema Değiştir">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <a href="#" title="Giriş Yap"><i class="fas fa-user"></i></a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="blog-grid">
+            <div class="blog-item">
+                <img src="/images/karın_kası.jpg" alt="Karın kası egzersizleri">
+                <div class="blog-content">
+                    <h2>Evde Etkili Karın Kası Egzersizleri</h2>
+                    <p>Güçlü ve sıkı bir karın bölgesi için evde yapabileceğiniz etkili egzersizler.</p>
+                </div>
+                <div class="blog-footer">
+                    <a href="#" class="read-more">Devamını Oku</a>
+                    <div>
+                        <button class="like-btn" onclick="likePost(this)">❤</button>
+                        <span class="like-count">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-item">
+                <img src="/images/smoothie.jpg" alt="Protein smoothie">
+                <div class="blog-content">
+                    <h2>Protein Açısından Zengin 5 Smoothie Tarifi</h2>
+                    <p>Lezzetli ve besleyici protein smoothie tarifleriyle günlük protein ihtiyacınızı karşılayın.</p>
+                </div>
+                <div class="blog-footer">
+                    <a href="#" class="read-more">Devamını Oku</a>
+                    <div>
+                        <button class="like-btn" onclick="likePost(this)">❤</button>
+                        <span class="like-count">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-item">
+                <img src="/images/kosu.jpg" alt="Koşu programı">
+                <div class="blog-content">
+                    <h2>Koşuya Yeni Başlayanlar İçin 4 Haftalık Program</h2>
+                    <p>Koşuya başlamak isteyenler için adım adım 4 haftalık başlangıç programı.</p>
+                </div>
+                <div class="blog-footer">
+                    <a href="#" class="read-more">Devamını Oku</a>
+                    <div>
+                        <button class="like-btn" onclick="likePost(this)">❤</button>
+                        <span class="like-count">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-item">
+                <img src="/images/yoga.jpg" alt="Yoga">
+                <div class="blog-content">
+                    <h2>Evde Yapabileceğiniz 5 Temel Yoga Pozu</h2>
+                    <p>Esnekliğinizi artırmak ve stresi azaltmak için evde uygulayabileceğiniz basit yoga pozları.</p>
+                </div>
+                <div class="blog-footer">
+                    <a href="#" class="read-more">Devamını Oku</a>
+                    <div>
+                        <button class="like-btn" onclick="likePost(this)">❤</button>
+                        <span class="like-count">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-item">
+                <img src="/images/sneaks.jpg" alt="Sağlıklı atıştırmalıklar">
+                <div class="blog-content">
+                    <h2>Fitness Dostu 7 Sağlıklı Atıştırmalık</h2>
+                    <p>Diyet programınızı destekleyecek, protein ve lif açısından zengin atıştırmalık önerileri.</p>
+                </div>
+                <div class="blog-footer">
+                    <a href="#" class="read-more">Devamını Oku</a>
+                    <div>
+                        <button class="like-btn" onclick="likePost(this)">❤</button>
+                        <span class="like-count">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-item">
+                <img src="/images/evde_spor.jpg" alt="Evde fitness">
+                <div class="blog-content">
+                    <h2>Ekipman Olmadan Evde Yapılabilecek 10 Egzersiz</h2>
+                    <p>Spor salonuna gitmeden evde yapabileceğiniz, tüm vücudu çalıştıran etkili egzersizler.</p>
+                </div>
+                <div class="blog-footer">
+                    <a href="#" class="read-more">Devamını Oku</a>
+                    <div>
+                        <button class="like-btn" onclick="likePost(this)">❤</button>
+                        <span class="like-count">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+ </div>
+    
+
+            <footer class="site-footer">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>GetLife Nedir? </h3>
+                        <p>Sağlıklı yaşam ve fitness yolculuğunuzda yanınızdayız. Profesyonel rehberlik ve kişiselleştirilmiş programlarla hedeflerinize ulaşmanıza yardımcı oluyoruz.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Hızlı Bağlantılar</h3>
+                        <ul>
+                            <li><a href="/index.html">Ana Sayfa</a></li>
+                            <li><a href="/antrenman.html">Antrenman</a></li>
+                            <li><a href="/beslenme.html">Beslenme</a></li>
+                            <li><a href="/blog.html">Blog</a></li>
+                            <li><a href="/iletisim.html">İletişim</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>İletişim</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Şahinbey, Gaziantep</p>
+                        <p><i class="fas fa-phone"></i> Telefon: (0537) 780 36 12</p>
+                        <p><i class="fas fa-envelope"></i> keremerkengel@gmail.com</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Bizi Takip Edin</h3>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 GetLife. Tüm hakları saklıdır.</p>
+                </div>
+            </footer>
+
+
+    <script src="script.js"></script>
+     <script>
+        function likePost(button) {
+            let likeCount = button.nextElementSibling;
+            let count = parseInt(likeCount.innerText);
+            if (button.classList.contains('liked')) {
+                button.classList.remove('liked');
+                count--;
+            } else {
+                button.classList.add('liked');
+                count++;
+            }
+            likeCount.innerText = count;
+        } </script>
+</body>
+</html>

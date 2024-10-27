@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Life - Beslenme Rehberi</title>
+    <meta name="description" content="Get Life ile sağlıklı beslenme rehberi. Besin grupları, beslenme ipuçları ve öneriler.">
+    <link rel="canonical" href="https://www.getlife.com/beslenme.html">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+         :root {
+            --bg-color: #F5F5F5;
+            --primary-color: #48CFCB;
+            --secondary-color: #229799;
+            --text-color: #424242;
+            --card-bg: #ffffff;
+        }
+
+        .dark-mode {
+            --bg-color: #121212;
+            --primary-color: #5FE3E0;
+            --secondary-color: #2FCAC7;
+            --text-color: #E0E0E0;
+            --card-bg: #1E1E1E;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 1rem;
+        }
+        .page-title {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+        }
+        .section {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+        }
+        .section h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .food-item {
+            background-color: var(--bg-color);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .food-item:hover {
+            transform: scale(1.05);
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+        }
+        .food-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        .food-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+        .food-item:hover h3 {
+            color: var(--bg-color);
+        }
+        .tips-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .tips-list li {
+            background-color: var(--bg-color);
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .tips-list li:hover {
+            transform: translateX(10px);
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+        }
+        .meal-plan {
+            background-color: var(--bg-color);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+        .meal-plan h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        .recipe {
+            background-color: var(--bg-color);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        .recipe:hover {
+            transform: scale(1.03);
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+        }
+        .recipe img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        .faq-item {
+            background-color: var(--bg-color);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+        }
+        .faq-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+        .faq-item:hover h4 {
+            color: var(--bg-color);
+        }
+        .faq-item p {
+            display: none;
+        }
+        .faq-item.active p {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/index.html" class="logo">
+                <img src="/images/logo_transparent.png" alt="Get Life Logo">
+            </a>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="/antrenman.html">Antrenman</a></li>
+                    <li class="active"><a href="/beslenme.html">Beslenme</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li><a href="/hesaplamalar.html">Hesaplamalar</a></li>
+                    <li><a href="/iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="nav-icons">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Ara...">
+                </div>
+                <div class="mode-toggle" title="Tema Değiştir">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <a href="#" title="Giriş Yap"><i class="fas fa-user"></i></a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="content-wrapper">
+        <h1 class="page-title animate__animated animate__fadeInDown">Sağlıklı Beslenme Rehberi</h1>
+
+        <section class="section animate__animated animate__fadeInUp">
+            <h2>Besin Grupları</h2>
+            <div class="food-grid">
+                <div class="food-item">
+                    <img src="images/protein.png" alt="Proteinler" loading="lazy">
+                    <h3>Proteinler</h3>
+                    <p>Et, balık, yumurta, kurubaklagiller, tofu</p>
+                </div>
+                <div class="food-item">
+                    <img src="images/karbonhidrat.png" alt="Karbonhidratlar" loading="lazy">
+                    <h3>Karbonhidratlar</h3>
+                    <p>Tam tahıllar, patates, meyve, sebze</p>
+                </div>
+                <div class="food-item">
+                    <img src="images/yağ.png" alt="Sağlıklı Yağlar" loading="lazy">
+                    <h3>Sağlıklı Yağlar</h3>
+                    <p>Zeytinyağı, avokado, kuruyemişler, tohumlar</p>
+                </div>
+                <div class="food-item">
+                    <img src="images/süt_ürünleri.png" alt="Süt Ürünleri" loading="lazy">
+                    <h3>Süt Ürünleri</h3>
+                    <p>Süt, yoğurt, peynir, kefir</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section animate__animated animate__fadeInUp">
+            <h2>Sağlıklı Beslenme İpuçları</h2>
+            <ul class="tips-list">
+                <li>Günde en az 5 porsiyon sebze ve meyve tüketin.</li>
+                <li>İşlenmiş gıdalardan kaçının, ev yapımı yemekleri tercih edin.</li>
+                <li>Yemeklerinizi yavaş yiyin ve çiğnemeye özen gösterin.</li>
+                <li>Şeker ve tuz tüketiminizi azaltın.</li>
+                <li>Kahvaltıyı asla atlamayın.</li>
+                <li>Günde en az 8 bardak su için.</li>
+                <li>Öğün atlamak yerine, küçük porsiyonlarla sık sık beslenin.</li>
+            </ul>
+        </section>
+
+        <section class="section animate__animated animate__fadeInUp">
+            <h2>Sağlıklı Tarifler</h2>
+            <div class="recipe" style="text-align: center;">
+                <h3>Protein Smoothie Bowl</h3>
+                <img src="images/smoothie-bowl.jpg" alt="Protein Smoothie Bowl" loading="lazy">
+                <h4>Malzemeler:</h4>
+                
+                    1 muz,
+                    1 avuç ıspanak,
+                    1 ölçü vanilyalı protein tozu,
+                    1/2 bardak yağsız süt veya badem sütü,
+                    1 yemek kaşığı chia tohumu,<br>
+                    Üzeri için: Yaban mersini, Granola, Hindistan Cevizi
+                
+                <h4>Hazırlanışı:</h4>
+                <p>Tüm malzemeleri (üzeri için olanlar hariç) blenderdan geçirin. Kaseye alın ve üzerini sevdiğiniz malzemelerle süsleyin.</p>
+            </div>
+        </section>
+
+        <section class="section animate__animated animate__fadeInUp">
+            <h2>Sık Sorulan Sorular</h2>
+            <div class="faq">
+                <div class="faq-item">
+                    <h4>Günde kaç öğün yemek yemeliyim?</h4>
+                    <p>Genellikle 3 ana öğün ve 2-3 ara öğün önerilir, ancak bu kişinin yaşam tarzına ve hedeflerine göre değişebilir.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Gluten içermeyen diyet herkes için faydalı mıdır?</h4>
+                    <p>Çölyak hastalığı veya gluten hassasiyeti olmayan kişiler için gluten içermeyen diyet gerekli değildir ve hatta bazı besin maddelerinin eksikliğine yol açabilir.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Kilo vermek için hangi besinlerden kaçınmalıyım?</h4>
+                    <p>Kilo vermek için belirli besinlerden tamamen kaçınmak yerine, genel olarak kalori alımınızı azaltmanız ve dengeli beslenmeniz önemlidir. Ancak, işlenmiş gıdalar, şekerli içecekler ve aşırı yağlı yiyecekleri sınırlamanız faydalı olacaktır.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>GetLife Nedir? </h3>
+                <p>Sağlıklı yaşam ve fitness yolculuğunuzda yanınızdayız. Profesyonel rehberlik ve kişiselleştirilmiş programlarla hedeflerinize ulaşmanıza yardımcı oluyoruz.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Hızlı Bağlantılar</h3>
+                <ul>
+                    <li><a href="/index.html">Ana Sayfa</a></li>
+                    <li><a href="/antrenman.html">Antrenman</a></li>
+                    <li><a href="/beslenme.html">Beslenme</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li><a href="/iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>İletişim</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Şahinbey, Gaziantep</p>
+                <p><i class="fas fa-phone"></i> Telefon: (0537) 780 36 12</p>
+                <p><i class="fas fa-envelope"></i> keremerkengel@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Bizi Takip Edin</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 GetLife. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+</footer>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        new WOW().init();
+
+        // FAQ için interaktif özellik
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
